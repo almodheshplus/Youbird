@@ -1,23 +1,5 @@
-/* Start Variables */
-:root {
-    --main-color: #001233;
-    --second-color: #FF595A;
-    --third-color: #CAC0B3;
-    --button-color: #ffffff;
-    --header-bg: var(--main-color);
-    --landing-bg: #001233af;
-    --footer-bg: var(--second-color);
-    --bg-behind: url(../images/background.svg);
-    --main-transition-time: 0.3s;
-    --transparent-cover-opacity: 0.7;
-    --progress-bar-bgcolor: #5b1d85;
-    --bar-transition-time: 5s;
-    --vid-bgcolor: #fff;
-    --vid-quality-bg: #FF595A;
-    --vid-quality-color: #dfdfdf;
-    --vid-title-color: #111111;
-}
-/* End Variables */
+/* Import Variables */
+@import url(../../variables.css);
 /* Start Global Rules */
 * {
     -webkit-box-sizing: border-box;
@@ -26,6 +8,13 @@
 }
 body {
     font-family: "Work Sans", sans-serif;
+}
+/* Custom Class For Error */
+.custom {
+    background: var(--error-color);
+    color: #ffffff;
+    padding: 2px;
+    border-radius: 3px;
 }
 /* Start Transparent Cover */
 .transparent-cover {
@@ -113,7 +102,7 @@ button {
     background-color: var(--third-color);
     margin-bottom: 4px;
     border-radius: 10px;
-    transition: var(--main-transition-time);
+    transition: var(--main-transition-time, 0.3s);
 }
 .header .links .icon span:nth-child(2) {
     width: 60%;
@@ -143,17 +132,17 @@ button {
 }
 /* Close Menu Container */
 .links-menu .close-menu {
-    color: var(--second-color);
+    color: var(--second-color, #FF595A);
     font-size: 2rem;
     margin-bottom: 20px;
-    background-color: var(--main-color);
+    background-color: var(--main-color, #001233);
     padding: 5px 11px;
     border-radius: 100%;
-    transition: color var(--main-transition-time) ease-in-out, background-color var(--main-transition-time) ease-in-out;
+    transition: color var(--main-transition-time, 0.3s) ease-in-out, background-color var(--main-transition-time, 0.3s) ease-in-out;
 }
 .links-menu .close-menu:hover {
     color: var(--button-color);
-    background-color: var(--second-color);
+    background-color: var(--second-color, #FF595A);
 }
 .links-menu ul {
     list-style: none;
@@ -168,11 +157,11 @@ button {
     text-decoration: none;
     color: var(--third-color);
     font-weight: 600;
-    transition: var(--main-transition-time);
+    transition: var(--main-transition-time, 0.3s);
     position: relative;
 }
 .links-menu ul li a:hover {
-    color: var(--second-color);
+    color: var(--second-color, #FF595A);
 }
 /* End Header */
 /* Start Landing Section */
@@ -183,6 +172,7 @@ button {
     position: relative;
     padding: 10px 0;
     z-index: 2;
+    min-height: calc(90vh);
 }
 .landing .intro-box {
     text-align: center;
@@ -195,7 +185,7 @@ button {
 }
 .landing .intro-box h1 {
     margin: 0;
-    color: var(--second-color);
+    color: var(--second-color, #FF595A);
     text-shadow: 1px 2px 2px #0000005c;
     font-weight: bold;
 }
@@ -227,107 +217,95 @@ button {
 .landing .intro-box .url-form .form-input:focus {
     outline: none;
 }
+.landing .intro-box .url-form textarea.form-input {
+    font-size: 1rem!important;
+    resize: none;
+}
+.landing .intro-box .url-form textarea:focus {
+    border: none;
+    outline: none;
+}
 .landing .intro-box .url-form .submit-button {
     box-shadow: inset 0 0 0 0 var(--third-color);
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     color: var(--button-color);
-    background-color: var(--second-color);
-    transition: color var(--main-transition-time) ease-in-out, box-shadow var(--main-transition-time) ease-in-out;
+    background-color: var(--second-color, #FF595A);
+    transition: color var(--main-transition-time, 0.3s) ease-in-out, box-shadow var(--main-transition-time, 0.3s) ease-in-out;
 }
 .landing .intro-box .url-form .submit-button:hover {
     box-shadow: inset 100px -100px 0 0 var(--third-color);
-    color: var(--main-color);
-}
-.landing .intro-box .url-form .submit-button:focus {
-    color: var(--second-color);
+    color: var(--main-color, #001233);
 }
 /* End Landing Section */
-/* Start Video Dowloader */
-.landing .video-download {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-gap: 20px;
-    padding: 15px;
-    margin-top: 10px;
-    margin-bottom: 15px;
-}
-.landing .video-download .vid {
-    background: var(--vid-bgcolor);
-    width: 300px;
+/* Start Video Dwonloader V1 */
+.video-information {
+    background: var(--video-infobgcolor);
+    width: 500px;
     max-width: 100%;
-    border-radius: 7px;
-    position: relative;
-    text-align: center;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-    transition: box-shadow var(--main-transition-time) ease-in-out;
+    margin: 35px auto;
+    border-radius: 3px;
+    border: 2px solid var(--video-infobordercolor);
 }
-.landing .video-download .vid:hover {
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-}
-.landing .video-download .vid .quality {
-    background: var(--vid-quality-bg);
-    color: var(--vid-quality-color);
-    position: absolute;
-    top: 0%;
-    left: 0%;
+.video-information .container {
+    max-width: 100%;
     padding: 10px;
-    border-bottom-right-radius: 7px;
-    border-top-left-radius: 7px;
-    box-shadow: 1.4px 1.4px 3px rgba(0, 0, 0, 0.26);
 }
-.landing .video-download .vid .title {
-    background: transparent;
-    padding: 9px;
+.video-information .thumbnailandtitle .title {
     margin: 0;
-    color: var(--vid-title-color);
+    padding: 10px 0 10px 15px;
+    color: var(--vid-title-color, #fff);
+    border-bottom: 4px solid var(--headphones-color);
 }
-.landing .video-download .vid img.vid-thumbnail {
+.video-information .thumbnailandtitle img.thumbnail {
     width: 100%;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
+    border-radius: 5px;
 }
-.landing .video-download .vid .download-btn {
+.video-information .downloadlinks table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.video-information .downloadlinks table tbody tr td {
+    padding: 15px;
+    color: var(--td-color);
+}
+.video-information .downloadlinks table tbody tr td i.fa-volume-mute {
+    color: var(--mute-color);
+}
+.video-information .downloadlinks table tbody tr td i.fa-headphones {
+    color: var(--headphones-color);
+}
+.video-information .downloadlinks table tbody tr td a {
+    background: var(--download-btn-bgcolor);
+    color: var(--second-color, #FF595A);
     text-decoration: none;
-    color: var(--second-color);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: inset 0 0 0 0 var(--second-color, #FF595A);
+    transition: color var(--main-transition-time, 0.3s), box-shadow var(--main-transition-time, 0.3s) ease-in-out;
 }
-.landing .video-download .vid .download-btn .d-text {
-    padding-top: 5px;
-    padding-bottom: 10px;
-    font-size: 20px;
-    text-shadow: 1px 1px 5px #00000073;
+.video-information .downloadlinks table tbody tr td a:hover {
+    box-shadow: inset 100px -100px 0 0 var(--second-color, #FF595A);
+    color: #f1f1f1;
 }
-@media (max-width: 630px) {
-    .landing .video-download {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    }
+.video-information .downloadlinks table tbody tr:not(:last-child) {
+    border-bottom: 1px solid rgba(105, 105, 105, 0.836);
 }
-@media (max-width: 450px) {
-    .landing .video-download {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    }
-    .landing .video-download .vid .title {
-        font-size: 12px;
-    }
-    .landing .video-download .vid .download-btn .d-text {
-        font-size: 14px;
-    }
+.video-information .downloadlinks table tbody tr td:last-child {
+    text-align: right;
 }
-@media (max-width: 372px) {
-    .landing .video-download {
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    }
-    .landing .video-download .vid {        
-        width: 100%;
-    }
-    .landing .video-download .vid .title {
+@media (max-width: 400px) {
+    .video-information .thumbnailandtitle .title {
         font-size: 16px;
     }
-    .landing .video-download .vid .download-btn .d-text {
-        font-size: 18px;
+    .video-information .downloadlinks table tbody tr td {
+        font-size: 14px;
+    }
+    .video-information .downloadlinks table tbody tr td a {
+        padding: 8px;
     }
 }
-/* End Video Dowloader */
+/* End Video Dwonloader V1 */
 /* Start Footer Section */
 .footer {
     padding: 25px 0;

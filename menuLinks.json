@@ -1,0 +1,22 @@
+{
+    "menu": [
+        {
+            "text": "Download Video",
+            "link": "#downloadYTVideos",
+            "iconClass": "download",
+            "iconColor": "color:rgb(160, 84, 84);"
+        },
+        {
+            "text": "About Us",
+            "link": "#about",
+            "iconClass": "question-circle",
+            "iconColor": "color:rgb(165, 79, 8);"
+        },
+        {
+            "text": "Contact Us",
+            "link": "#contact",
+            "iconClass": "heart",
+            "iconColor": "color:rgb(100, 15, 15);"
+        }
+    ]
+}

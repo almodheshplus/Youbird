@@ -1,0 +1,15 @@
+{
+    "url": "http://localhost/all/Youbird",
+    "title": "Youbird - Youtube video Downloader",
+    "description": "Youbird - free youtube video downloader, easy to deal with",
+    "keywords": "youtube,video downloader,youtube downloader,youtube video downloader,youbird,video,youtube video",
+    "socialMediaImage": "./ogimage.png",
+    "favicon": "./favicon.ico",
+    "svgIcon": "./icon.svg",
+    "pngIcon": "./icon.png",
+    "logo": "./logo.png",
+    "themeColor": "#fde",
+    "boldText": "Free Online Video Downloader",
+    "smallText": "Download video from YouTube for free",
+    "copyrightText": "Designed with <i style=\"color: rgb(207, 15, 15);\" class=\"fa fa-heart\"></i> By Almodesh Plus&copy;"
+}

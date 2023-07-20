@@ -3,3 +3,5 @@ visualID
 .editorconfig
 test.json
 README.md
+includes
+*.zip
