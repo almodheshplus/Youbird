@@ -1,7 +1,12 @@
 <?php
+// Check if install.php Exists
+if (file_exists("./install.php")) {exit("<h3>Please Delete <code>install.php</code> file</h3><div id='help'>Need Help? <a href='https://github.com/almodheshplus/YoubirdHelp' target='_blank' rel='noopener noreferr'>Documentaion</a></div>");}
 // Get setting from json file
 $info = json_decode(file_get_contents("./settings.json"));
-$setting = json_decode(file_get_contents("./menuLinks.json"));
+$themeColor = json_decode(file_get_contents("./colorPalettes/palette.".$info->palette.".json"))->themeColor;
+// Menu
+$menu = json_decode(file_get_contents("./menuLinks.json"));
+// Ad Units
 function getAd($unit) {
     if (file_exists("./adUnit".$unit.".html")) {
         return file_get_contents("./adUnit".$unit.".html");
@@ -25,7 +30,8 @@ function getAd($unit) {
     <meta property="og:url" content="<?= $info->url; ?>">
     <meta property="og:image" content="<?= $info->socialMediaImage; ?>">
     <!-- Favicon -->
-    <link rel="icon" href="<?= $info->favicon; ?>" sizes="any">
+    <link rel="shortcut icon" href="<?= $info->favicon; ?>" type="image/x-icon">
+    <link rel="icon" href="<?= $info->pngIcon; ?>" sizes="any">
     <link rel="icon" href="<?= $info->svgIcon; ?>" type="image/svg+xml">
     <link rel="apple-touch-icon" href="<?= $info->pngIcon; ?>">
     <!-- 
@@ -34,10 +40,9 @@ function getAd($unit) {
         ## provides information about a web application
         ### provide information that the browser needs to install a progressive web app
      -->
-    <link rel="manifest" href="./manifest.json">
     <link rel="manifest" href="./site.webmanifest">
     <!-- Theme color -->
-    <meta name="theme-color" content="<?= $info->themeColor; ?>">
+    <meta name="theme-color" content="<?= $themeColor; ?>">
     <!-- Google Fonts (Wrok Sans) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,6 +53,7 @@ function getAd($unit) {
     <link rel="stylesheet" href="./assets/css/all.min.css">
     <!-- Main CSS File -->
     <link rel="stylesheet" href="./assets/css/main.css">
+    <?= (file_exists("./customHeadCode.html")) ? file_get_contents("./customHeadCode.html")."\n": "<!-- Custom Head Code File Doesn't Exists -->\n"; ?>
     <!-- Structured Data (json+ld) -->
     <script type="application/ld+json">
     {
@@ -106,7 +112,7 @@ function getAd($unit) {
         <!-- Menu Links -->
         <ul>
             <?php
-                foreach ($setting->menu as $link) {
+                foreach ($menu->menu as $link) {
             ?>
                 <li><a href="<?= $link->link; ?>"><i style="<?= $link->iconColor; ?>" class="fa fa-<?= $link->iconClass; ?>"></i> <?= $link->text; ?></a></li>
             <?php } ?>

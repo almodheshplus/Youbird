@@ -1,13 +1,13 @@
 {
-  "short_name": "YB",
-  "name": "Youbird",
-  "icons": [{
-    "src": "icon.png",
+"short_name": "YB",
+"name": "Youbird",
+"icons": [{
+    "src": "http://localhost/all/Youbird/icon.png",
     "type": "image/png",
     "sizes": "192x192"
-  }],
-  "start_url": ".",
-  "display": "standalone", 
-  "background_color": "#fafafa",
-  "theme_color": "#fafafa"
+}],
+"start_url": "http://localhost/all/Youbird",
+"display": "standalone", 
+"background_color": "#0C1A1A",
+"theme_color": "#0C1A1A"
 }

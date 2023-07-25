@@ -1,6 +1,8 @@
 <?php
 header("Content-Type: text/css;charset=UTF-8");
-$cvariables = json_decode(file_get_contents("../../cssvariables.json"));
+// $cvariables = json_decode(file_get_contents("../../cssvariables.json"));
+$settings = json_decode(file_get_contents("../../settings.json"));
+$cvariables = json_decode(file_get_contents("../../colorPalettes/palette.".$settings->palette.".json"));
 ?>
 /* Start Variables */
 :root {

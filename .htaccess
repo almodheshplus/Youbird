@@ -3,4 +3,5 @@ RewriteEngine On
 RewriteRule ^data\.json$ data\.php [NC,L,QSA]
 RewriteRule ^([-a-zA-z0-9]{11}|watch).*$ index\.php?v=$1 [L,QSA]
 RewriteRule ^variables\.css$ assets/css/variables.php [NC,L,QSA]
+RewriteRule ^download/$ download.php [L,QSA]
 </IfModule>

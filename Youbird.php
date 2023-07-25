@@ -30,7 +30,7 @@ class Youbird
     public function setPlatform($platform) {
         if ($platform == "youtube") {
             foreach ($this->links as $link) {
-                if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $link, $vid_id)) {
+                if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?|(?:shorts))/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $link, $vid_id)) {
                     if (isset($vid_id[1])) {
                         $this->videoIDs[] = $vid_id[1];
                     }
