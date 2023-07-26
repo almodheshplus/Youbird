@@ -48,7 +48,7 @@ if (isset($_GET["link"])) {
             "type": "<?= (preg_match("/^.*(?=\/[webmp4]+;)/", $format->mimeType, $match1)) ? "": "UNKNOWEN" ; ?>",
             "extention": "<?= (preg_match("/(?<=[videoaud]\/).[\w\d]+/", $format->mimeType, $match2)) ? $match2[0] : "UNKNOWEN" ; ?>",
             "quality": "<?= $format->qualityLabel; ?>",
-            "downloadLink": "<?= ($info->customDownloadPage) ? $info->url."/download/?".http_build_query(["title"=>$video->videoDetails->title, "link"=>$format->url, "contentLength"=>(isset($format->contentLength)) ? $format->contentLength: "", "mimetype"=>$format->mimeType]): $format->url; ?>"
+            "downloadLink": "<?= ($info->customDownloadPage) ? $info->url."/download/?".http_build_query(["title"=>$video->videoDetails->title, "link"=>(isset($format->url)) ? $format->url: "", "contentLength"=>(isset($format->contentLength)) ? $format->contentLength: "", "mimetype"=>$format->mimeType]): ((isset($format->url)) ? $format->url: "./404.html"); ?>"
         },
         <?php
         }
@@ -60,7 +60,7 @@ if (isset($_GET["link"])) {
             "type": "<?= (preg_match("/^.*(?=\/[webmp4]+;)/", $format->mimeType, $match1)) ? icon($match1[0]) : "UNKNOWEN" ; ?>",
             "extention": "<?= (preg_match("/(?<=[videoaud]\/).[\w\d]+/", $format->mimeType, $match2)) ? $match2[0] : "UNKNOWEN" ; ?>",
             "quality": "<?= (isset($format->quality)) ? ($match1[0] == "video") ? $format->qualityLabel:"Audio": $format->qualityLabel; ?>",
-            "downloadLink": "<?= ($info->customDownloadPage) ? $info->url."/download/?".http_build_query(["title"=>$video->videoDetails->title, "link"=>$format->url, "contentLength"=>(isset($format->contentLength)) ? $format->contentLength: "", "mimetype"=>$format->mimeType]): $format->url; ?>"
+            "downloadLink": "<?= ($info->customDownloadPage) ? $info->url."/download/?".http_build_query(["title"=>$video->videoDetails->title, "link"=>(isset($format->url)) ? $format->url: "", "contentLength"=>(isset($format->contentLength)) ? $format->contentLength: "", "mimetype"=>$format->mimeType]): ((isset($format->url)) ? $format->url: "./404.html"); ?>"
         }<?= ($i >= count($video->streamingData->adaptiveFormats)) ? "" : ","; ?>
         <?php
         }}
